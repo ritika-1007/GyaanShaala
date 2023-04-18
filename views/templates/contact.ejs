@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate')%>
+
+    <div class="container-fluid mt-5 about-style" id="aboutid">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <h2 class="text-center main-heading">Contact Us</h2>
+                <p class="text-center sub-heading">We are happy to help!</p>
+                <div class="row">
+                    <div class="col-md-6 col-12 mx-auto">
+                        <form action="/contact" method="POST">
+                            <div class="mb-3">
+                                <label for="exampleInputName" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="exampleInputName"
+                                    aria-describedby="nameHelp" name="name" placeholder="Full Name">
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail"
+                                    aria-describedby="emailHelp" name="email" placeholder="Your email id">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPhone" class="form-label">Contact Number</label>
+                                <input type="number" class="form-control" id="exampleInputPhone"
+                                    aria-describedby="phoneHelp" name="phone" placeholder="Phone Number">
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputMsg" class="form-label">Message</label>
+                                <input type="text" class="form-control" id="exampleInputMsg" aria-describedby="msgHelp"
+                                    name="msg" placeholder="Your Message">
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
