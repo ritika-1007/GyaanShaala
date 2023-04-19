@@ -22,13 +22,14 @@ app.get("/team", (req, res) => {
 app.get("/contact", (req, res) => {
     res.render("templates/contact");
 })
-app.get("/dsa", (req, res) => {
+
+app.get("/materials/dsa", (req, res) => {
     res.render("templates/dsa");
 })
-app.get("/development", (req, res) => {
+app.get("/materials/development", (req, res) => {
     res.render("templates/development");
 })
-app.get("/academics", (req, res) => {
+app.get("/materials/academics", (req, res) => {
     res.render("templates/academics");
 })
 app.get("/testimonials", (req, res) => {
@@ -36,6 +37,42 @@ app.get("/testimonials", (req, res) => {
 })
 app.get("/feedback", (req, res) => {
     res.render("templates/feedback");
+})
+//data structures and algorithms content
+app.get("/materials/dsa/ds", (req, res) => {
+    res.render("templates/innercontents/ds");
+})
+app.get("/materials/dsa/cp", (req, res) => {
+    res.render("templates/innercontents/cp");
+})
+app.get("/materials/core", (req, res) => {
+    res.render("templates/innercontents/core");
+})
+app.get("/materials/resume", (req, res) => {
+    res.render("templates/innercontents/resume");
+})
+//development contents
+app.get("/materials/development/webdev", (req, res) => {
+    res.render("templates/innercontents/webdev");
+})
+app.get("/materials/development/appdev", (req, res) => {
+    res.render("templates/innercontents/appdev");
+})
+app.get("/materials/development/ml", (req, res) => {
+    res.render("templates/innercontents/ml");
+})
+//academics content
+app.get("/materials/academics/pyq", (req, res) => {
+    res.render("templates/innercontents/pyq");
+})
+app.get("/materials/academics/assign", (req, res) => {
+    res.render("templates/innercontents/assign");
+})
+app.get("/materials/academics/books", (req, res) => {
+    res.render("templates/innercontents/books");
+})
+app.get("/materials/academics/calendar", (req, res) => {
+    res.render("templates/innercontents/calendar");
 })
 
 
