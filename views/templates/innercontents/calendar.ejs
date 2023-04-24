@@ -1,3 +1,37 @@
 <% layout('layouts/boilerplate')%>
     <link rel="stylesheet" href="/stylesheets/innercontents/calendar.css">
-    <h1>Academic Calendar</h1>
+<h1 class="heading">Academic Calendar</h1>
+
+    <div class="main">
+        <div class="register">
+            <form id="register" method="post">
+                <label for="course">Course: </label>
+                <br>
+                <select class="course" name="course" id="name">
+                    <option value="MCA">MCA</option>
+                </select>
+                <br> <br>
+                <label for="branch">Branch: </label>
+                <br>
+                <select class="course" name="branch" id="name">
+                    <option value="NA">NA</option>
+                </select>
+                <br>
+                <br>
+                <label for="branch">Semester: </label>
+                <br>
+                <select class="course" name="sem" id="name">
+                    <option value="1">1st</option>
+                    <option value="2">2nd</option>
+                    <option value="3">3rd</option>
+                    <option value="4">4th</option>
+                    <option value="5">5th</option>
+                    <option value="6">6th</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Submit" name="submit" id="submit">
+            </form>
+
+        </div>
+
+    </div>
