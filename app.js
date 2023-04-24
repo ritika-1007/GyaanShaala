@@ -1,7 +1,19 @@
 const express = require("express");
+fs = require('fs');
 const app = express();
 const path = require("path");
 const ejsMate = require('ejs-mate');
+// const mongoose = require('mongoose');
+const User = require("./models/user/usercontact");
+
+// const dbUrl = 'mongodb://localhost:27017/gyaanshaala';
+// main().catch(err => {
+//     console.log(err)
+// });
+// async function main() {
+//     await mongoose.connect(dbUrl);
+//     console.log("Connection open");
+// }
 
 app.use(express.urlencoded({ extended: true }))
 app.engine('ejs', ejsMate);
@@ -21,6 +33,16 @@ app.get("/team", (req, res) => {
 })
 app.get("/contact", (req, res) => {
     res.render("templates/contact");
+})
+app.post("/contact", async (req, res) => {
+    try {
+        const userData = new User(req.body)
+        await userData.save();
+        res.status(201).render("home");
+    }
+    catch (error) {
+        res.status(500).send(error)
+    }
 })
 
 app.get("/materials/dsa", (req, res) => {
@@ -71,10 +93,15 @@ app.get("/materials/academics/assign", (req, res) => {
 app.get("/materials/academics/books", (req, res) => {
     res.render("templates/innercontents/books");
 })
-app.get("/materials/academics/calendar", (req, res) => {
-    res.render("templates/innercontents/calendar");
-})
 
+app.get('/materials/academics/calendar', function (req, res) {
+    var filePath = "/public/docs/calendar.pdf";
+
+    fs.readFile(__dirname + filePath, function (err, data) {
+        res.contentType("application/pdf");
+        res.send(data);
+    });
+});
 
 app.listen(3000, () => {
     console.log(`Listening at port 3000`);

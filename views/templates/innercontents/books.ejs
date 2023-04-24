@@ -12,23 +12,42 @@
                 <br><br>
                 <label for="branch">Semester: </label>
                 <br>
-                <select class="course" name="sem" id="name">
-                    <option value="1">1st</option>
-                    <option value="2">2nd</option>
-                    <option value="3">3rd</option>
-                    <option value="4">4th</option>
-                    <option value="5">5th</option>
-                    <option value="6">6th</option>
+                <select class="course" name="sem" id="sem">
+                    <option value="selectsem">Select Semester</option>
+                    <option value="pps,it,dco,fol">1st</option>
+                    <option value="ds,oops,xml,automata,tw">2nd</option>
+                    <option value="os,dbms,sc,daa,obm">3rd</option>
+                    <option value="cg,se,cn,dm,ip">4th</option>
+                    <option value="mt,e-comm,pe,spm">5th</option>
                 </select>
                 <br> <br>
                 <label for="subject">Subject: </label>
                 <br>
-                <select class="course" name="subject" id="name">
-                    <option value="dco">Digital Computer Organisation</option>
-                    <option value="2">IT Management</option>
-                    <option value="3">Foundation of Logic</option>
-                    <option value="4">Problem Solving Using C</option>
-                    <option value="5">Object Oriented Programming</option>
+                <select class="course" name="subject" id="sub">
+                    <option value="selectsub">Select Subject</option>
+                    <option value="pps">Programming & Problem Solving</option>
+                    <option value="it">Principles of IT Management</option>
+                    <option value="dco">Digital & Computer Organization</option>
+                    <option value="fol">Foundation of Logic</option>
+                    <option value="ds">Data Structures</option>
+                    <option value="oops">Object Oriented Programming</option>
+                    <option value="xml">XML Applications</option>
+                    <option value="automata">Automata Theory</option>
+                    <option value="tw">Technical Writing</option>
+                    <option value="os">Operating System</option>
+                    <option value="dbms">Database Management System</option>
+                    <option value="sc">Soft Computing</option>
+                    <option value="daa">Analysis of Algorithms</option>
+                    <option value="obm">Object Based Modeling</option>
+                    <option value="cg">Computer Graphics</option>
+                    <option value="se">Software Engineering</option>
+                    <option value="cn">Computer Network</option>
+                    <option value="dm">Data Mining</option>
+                    <option value="ip">Image Processing</option>
+                    <option value="mt">Multimedia Technology</option>
+                    <option value="e-comm">E-commerce</option>
+                    <option value="pe">Professional Ethics</option>
+                    <option value="spm">Software Project Management</option>
                 </select>
                 <br><br>
                 <input type="submit" value="Submit" name="submit" id="submit">
@@ -37,3 +56,16 @@
         </div>
 
     </div>
+
+    <script>
+        const beta = document.getElementById('sub');
+        const betaOpts = [...beta.children];
+
+        document.getElementById('sem').addEventListener(
+            'change',
+            (e) => {
+                beta.innerHTML = betaOpts.filter(
+                    o => e.target.value.includes(o.value)
+                ).map(o => o.outerHTML).join('')
+            })
+    </script>
