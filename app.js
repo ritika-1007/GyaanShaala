@@ -64,8 +64,8 @@ app.get("/feedback", (req, res) => {
 app.get("/materials/dsa/ds", (req, res) => {
     res.render("templates/innercontents/ds");
 })
-app.get("/materials/dsa/cp", (req, res) => {
-    res.render("templates/innercontents/cp");
+app.get("/materials/dsa/practice", (req, res) => {
+    res.render("templates/innercontents/practice");
 })
 app.get("/materials/core", (req, res) => {
     res.render("templates/innercontents/core");

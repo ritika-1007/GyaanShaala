@@ -1,71 +1,67 @@
-*{
-    margin: 0;
-    padding: 0;
-
-}
-.heading{
+.heading {
     width: 1000px;
-    margin: 40px auto 0px auto;
-    background-color: rgba(0,0,0,0.5);
+    margin: 0px auto 0px auto;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.3);
-    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
     color: #fff;
     text-align: center;
     font-size: 40px;
-    padding: 20px;
+    padding: 5px;
     font-family: sans-serif;
 
 
 }
-body{
+
+body {
     background: url('https://res.cloudinary.com/fleetnation/image/private/c_fit,w_1120/g_south,l_text:style_gothic2:%C2%A9%20Stockimo,o_20,y_10/g_center,l_watermark4,o_25,y_50/v1482998535/hl7tm2mzvoom151rt7nh.jpg');
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
 }
 
-div.main{
+div.main {
     width: 1000px;
-    margin: 50px auto 0px auto;
+    margin: 0px auto 0px auto;
 }
 
-h2{
+h2 {
     text-align: center;
-    padding: 20px;
+    padding: 5px;
     font-family: sans-serif;
 }
 
-div.register{
-    background-color: rgba(0,0,0,0.5);
+div.register {
+    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     font-size: 18px;
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.3);
-    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
     color: #fff;
 
 }
 
-form#register{
+form#register {
     margin: 40px;
 }
 
-label{
+label {
     font-family: sans-serif;
     font-size: 18px;
 }
 
-input#name{
+input#name {
     width: 900px;
     border: 1px solid #ddd;
     border-radius: 3px;
     outline: 0;
     padding: 7px;
     background-color: #fff;
-    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.3);
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 
-input#submit{
+input#submit {
     width: 200px;
     padding: 7px;
     font-size: 16px;
@@ -75,21 +71,23 @@ input#submit{
     background-color: rgba(250, 100, 0, 0.8);
     color: #fff;
     cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.3);
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 5px;
 }
 
-label,span,h2{
-    text-shadow: 1px 1px 5px rgba(255,255,255,0.3)
+label,
+span,
+h2 {
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3)
 }
 
-.course{
+.course {
     width: 900px;
     border: 1px solid #ddd;
     border-radius: 3px;
     outline: 0;
     padding: 7px;
     background-color: #fff;
-    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.3);
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.3);
 }

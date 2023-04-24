@@ -1,0 +1,19 @@
+body {
+    background-color: lightcyan;
+}
+
+h1 {
+    text-align: center;
+}
+
+a:link {
+    color: purple;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: green;
+    background-color: transparent;
+    text-decoration: underline;
+}

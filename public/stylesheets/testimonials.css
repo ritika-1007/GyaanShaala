@@ -2,13 +2,15 @@
     background-image: url(https://www.adl-usa.com/wp-content/uploads/2015/12/Testimonials-background.png);
 }
 
-.testhead {
-    text-align: center;
-    font-weight: bolder;
-    font-style: italic;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 50px;
-    color: rgb(61, 39, 9);
+h1 {
+    display: table;
+    /* keep the background color wrapped tight */
+    margin: 0px auto 0px auto;
+    /* keep the table centered */
+    padding: 5px;
+    font-size: 30px;
+    background-color: lightgoldenrodyellow;
+    color: black;
 }
 
 .testcontainer {
