@@ -1,3 +1,39 @@
 <% layout('layouts/boilerplate')%>
     <link rel="stylesheet" href="/stylesheets/innercontents/books.css">
-    <h1>Books</h1>
+    <h1 class="heading">Books</h1>
+    <div class="main">
+        <div class="register">
+            <form id="register" method="post">
+                <label for="branch">Department: </label>
+                <br>
+                <select class="course" name="branch" id="name">
+                    <option value="NA">Computer Science</option>
+                </select>
+                <br><br>
+                <label for="branch">Semester: </label>
+                <br>
+                <select class="course" name="sem" id="name">
+                    <option value="1">1st</option>
+                    <option value="2">2nd</option>
+                    <option value="3">3rd</option>
+                    <option value="4">4th</option>
+                    <option value="5">5th</option>
+                    <option value="6">6th</option>
+                </select>
+                <br> <br>
+                <label for="subject">Subject: </label>
+                <br>
+                <select class="course" name="subject" id="name">
+                    <option value="dco">Digital Computer Organisation</option>
+                    <option value="2">IT Management</option>
+                    <option value="3">Foundation of Logic</option>
+                    <option value="4">Problem Solving Using C</option>
+                    <option value="5">Object Oriented Programming</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Submit" name="submit" id="submit">
+            </form>
+
+        </div>
+
+    </div>
