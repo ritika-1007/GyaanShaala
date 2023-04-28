@@ -70,9 +70,9 @@ app.get("/materials/dsa/practice", (req, res) => {
 app.get("/materials/core", (req, res) => {
     res.render("templates/innercontents/core");
 })
-app.get("/materials/resume", (req, res) => {
-    res.render("templates/innercontents/resume");
-})
+// app.get("/materials/resume", (req, res) => {
+//     res.render("templates/innercontents/resume");
+// })
 //development contents
 app.get("/materials/development/webdev", (req, res) => {
     res.render("templates/innercontents/webdev");

@@ -1,0 +1,22 @@
+body {
+    background-color: lightcyan;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+dt {
+    display: inline-block;
+    min-width: 320px;
+}
+
+dl:nth-child(odd) {
+    background: lightblue;
+}
+
+dl:nth-child(even) {
+    background: lightsalmon;
+}

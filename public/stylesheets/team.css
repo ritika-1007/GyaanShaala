@@ -56,8 +56,8 @@ a {
 
 .box {
     position: relative;
-    min-width: 250px;
-    background-color: #fff;
+    min-width: 300px;
+    background-color: lightcyan;
     box-shadow: 2px 3px 30px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
