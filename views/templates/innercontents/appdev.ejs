@@ -1,3 +1,129 @@
-<% layout('layouts/boilerplate')%>
-    <link rel="stylesheet" href="/stylesheets/innercontents/appdev.css">
-    
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Application Development Resources</title>
+  <style>
+    /* Internal CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    header {
+      background-color: #222;
+      color: #fff;
+      padding: 10px;
+    }
+    main {
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    section {
+      margin-top: 20px;
+    }
+    section h2 {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      margin: 10;
+    }
+    section ul {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    section li {
+      line-height: 1.5em;
+    }
+    section a {
+      color: #666;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    section a:hover {
+      color: #222;
+    }
+   
+    footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: absolute;
+      bottom: 10;
+      width: 100%;
+    }
+    /* Hover effect */
+    nav li:hover a {
+      color: #222;
+    }
+    /* Animation */
+    h1 {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+  
+</head>
+<body>
+  <header>
+    <h1>Application Development Resources</h1>
+  </header>
+  <main>
+        <section id="tutorials">
+            <h2>Tutorials</h2>
+            <ul>
+                <li><a href="https://developer.android.com/guide">Android Developer Guide</a></li>
+                <li><a href="https://developer.apple.com/documentation/">Apple Developer Documentation</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Learn">MDN Web Docs</a></li>
+            </ul>
+        </section>
+        <section id="courses">
+            <h2>Courses</h2>
+            <ul>
+                <li><a href="https://www.udacity.com/course/android-basics-nanodegree-by-google--nd803">Android Basics Nanodegree</a></li>
+                <li><a href="https://www.coursera.org/learn/swift-programming">Swift Programming</a></li>
+                <li><a href="https://www.udemy.com/course/the-web-developer-bootcamp/">The Web Developer Bootcamp</a></li>
+            </ul>
+        </section>
+        <section id="books">
+            <h2>Books</h2>
+            <ul>
+                <li><a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code: A Handbook of Agile Software Craftsmanship</a></li>
+                <li><a href="https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612">Design Patterns: Elements of Reusable Object-Oriented Software</a></li>
+                <li><a href="https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124">Head First Design Patterns: A Brain-Friendly Guide</a></li>
+            </ul>
+        </section>
+        <section id="tools">
+            <h2>Tools and Platforms</h2>
+            <ul>
+                <li><a href="https://developer.android.com/studio">Android Studio</a></li>
+                <li><a href="https://developer.apple.com/xcode/">Xcode</a></li>
+                <li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+            </ul>
+        </section>
+      
+        <section id="YouTube Courses">
+            <h2>YouTube Courses</h2>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=5bMdjkfvONE">Learn React JS - Full Course for Beginners</a> by FreeCodeCamp.org</li>
+                <li><a href="https://www.youtube.com/watch?v=8GPPJpiLqHk">Node.js Crash Course</a> by Traversy Media</li>
+                <li><a href="https://www.youtube.com/watch?v=pU2kAowT9-A">Learn Python - Full Course for Beginners</a> by Programming with Mosh</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 </p>
+    </footer>
+</body>
+</html>
