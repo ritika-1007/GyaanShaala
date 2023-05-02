@@ -92,7 +92,7 @@ a {
     color: #17b667;
 }
 
-/* creating heart */
+
 .heart {
     color: rgba(155, 155, 155);
 }
@@ -177,3 +177,5 @@ a {
     background-color: #507bfc;
     transition: all ease 0.5s;
 }
+
+`

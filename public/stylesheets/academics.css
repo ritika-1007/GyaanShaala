@@ -73,7 +73,7 @@ body {
 }
 
 .btn {
-  background-color: rgba(7, 177, 189, 0.108);
+  <<<<<<< HEAD background-color: rgba(7, 177, 189, 0.108);
   border-radius: 100px;
 
   border-color: #080808b9;
@@ -93,6 +93,30 @@ body {
   border-color: #fc010155;
 
   cursor: pointer;
+  ||||||| 9c2a3de background-color: cornflowerblue;
+  align-content: center;
+  border-radius: 50px;
+  =======background-color: rgba(7, 177, 189, 0.108);
+  border-radius: 100px;
+
+  border-color: #080808b9;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: extra large;
+  text-transform: capitalize;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  align-items: center;
+}
+
+.btn:hover {
+  background-color: #f6f1f100;
+  color: rgb(0, 0, 0);
+  border-color: #fc010155;
+
+  cursor: pointer;
+  >>>>>>>2976f8fd58b5e821c04c890d760feca8d4cec468
 }
 
 .btn-primary {
