@@ -1,71 +1,164 @@
 <% layout('layouts/boilerplate')%>
     <link rel="stylesheet" href="/stylesheets/innercontents/books.css">
     <h1 class="heading">Books</h1>
-    <div class="main">
-        <div class="register">
-            <form id="register" method="post">
-                <label for="branch">Department: </label>
-                <br>
-                <select class="course" name="branch" id="name">
-                    <option value="NA">Computer Science</option>
-                </select>
-                <br><br>
-                <label for="branch">Semester: </label>
-                <br>
-                <select class="course" name="sem" id="sem">
-                    <option value="selectsem">Select Semester</option>
-                    <option value="pps,it,dco,fol">1st</option>
-                    <option value="ds,oops,xml,automata,tw">2nd</option>
-                    <option value="os,dbms,sc,daa,obm">3rd</option>
-                    <option value="cg,se,cn,dm,ip">4th</option>
-                    <option value="mt,e-comm,pe,spm">5th</option>
-                </select>
-                <br> <br>
-                <label for="subject">Subject: </label>
-                <br>
-                <select class="course" name="subject" id="sub">
-                    <option value="selectsub">Select Subject</option>
-                    <option value="pps">Programming & Problem Solving</option>
-                    <option value="it">Principles of IT Management</option>
-                    <option value="dco">Digital & Computer Organization</option>
-                    <option value="fol">Foundation of Logic</option>
-                    <option value="ds">Data Structures</option>
-                    <option value="oops">Object Oriented Programming</option>
-                    <option value="xml">XML Applications</option>
-                    <option value="automata">Automata Theory</option>
-                    <option value="tw">Technical Writing</option>
-                    <option value="os">Operating System</option>
-                    <option value="dbms">Database Management System</option>
-                    <option value="sc">Soft Computing</option>
-                    <option value="daa">Analysis of Algorithms</option>
-                    <option value="obm">Object Based Modeling</option>
-                    <option value="cg">Computer Graphics</option>
-                    <option value="se">Software Engineering</option>
-                    <option value="cn">Computer Network</option>
-                    <option value="dm">Data Mining</option>
-                    <option value="ip">Image Processing</option>
-                    <option value="mt">Multimedia Technology</option>
-                    <option value="e-comm">E-commerce</option>
-                    <option value="pe">Professional Ethics</option>
-                    <option value="spm">Software Project Management</option>
-                </select>
-                <br><br>
-                <input type="submit" value="Submit" name="submit" id="submit">
-            </form>
 
+    <div class="row">
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Digital & Computer Organization</h6>
+                        <a href="/docs/dco.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Programming & Problem Solving</h6>
+                        <a href="/docs/pps.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Principles of IT Management</h6>
+                        <a href="/docs/it.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Data Structure</h6>
+                        <a href="/docs/ds.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Database Management System</h6>
+                        <a href="/docs/dbms.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Operating System</h6>
+                        <a href="/docs/os.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Analysis of Algorithms</h6>
+                        <a href="/docs/daa.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Soft Computing</h6>
+                        <a href="/docs/sc.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Computer Graphics</h6>
+                        <a href="/docs/cg.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Software Engineering</h6>
+                        <a href="/docs/se.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Data Mining</h6>
+                        <a href="/docs/dm.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <div class="card" style="width: 18rem;">
+                    <img src="https://previews.agefotostock.com/previewimage/medibigoff/d3a16a8ee2c5a3cfd22e100dcb4ddde2/esy-057510264.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-text">Computer Networks</h6>
+                        <a href="/docs/cn.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
+
     </div>
-
-    <script>
-        const beta = document.getElementById('sub');
-        const betaOpts = [...beta.children];
-
-        document.getElementById('sem').addEventListener(
-            'change',
-            (e) => {
-                beta.innerHTML = betaOpts.filter(
-                    o => e.target.value.includes(o.value)
-                ).map(o => o.outerHTML).join('')
-            })
-    </script>
