@@ -1,9 +1,8 @@
 body {
-  background-image: url('https://wallpaperaccess.com/full/1980395.jpg');
+  background-image: url("https://wallpapercave.com/wp/wp6350571.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+  background-color: #3fdd1f
 }
 
 #Heading {
@@ -26,32 +25,74 @@ body {
   padding: 20px;
 }
 
-/* Clear floats */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-  align-items: center;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 900px) {
   .column {
-    width: 50%;
+    width: 80%;
   }
 }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
     width: 100%;
   }
 }
 
+.card {
+  background-color: #53735b55;
+
+  border-radius: 20px;
+  padding: 25Px;
+  width: 80%;
+  box-shadow: 0 0 10px rgb(0, 255, 0);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  background-color: #972d2daf;
+  transform: translateY(-20px);
+  box-shadow: 0 0 40px rgb(250, 0, 0);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 9 rems;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.1);
+}
+
 .btn {
-  background-color: cornflowerblue;
-  align-content: center;
-  border-radius: 50px;
+  background-color: rgba(7, 177, 189, 0.108);
+  border-radius: 100px;
+
+  border-color: #080808b9;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: extra large;
+  text-transform: capitalize;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  align-items: center;
+}
+
+.btn:hover {
+  background-color: #f6f1f100;
+  color: rgb(0, 0, 0);
+  border-color: #fc010155;
+
+  cursor: pointer;
 }
 
 .btn-primary {
