@@ -1,3 +1,142 @@
-<% layout('layouts/boilerplate')%>
-    <link rel="stylesheet" href="/stylesheets/innercontents/webdev.css">
-    <h1>Web Development</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Development Resources</title>
+    <style>
+        /* Internal CSS */
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+        }
+        header {
+          background-color: #222;
+          color: #fff;
+          padding: 10px;
+        }
+        main {
+          padding: 20px;
+        }
+        h1,
+        h2 {
+          text-align: center;
+        }
+        section {
+          margin-top: 20px;
+        }
+        section h2 {
+          background-color: #333;
+          color: #fff;
+          padding: 10px;
+          margin: 0;
+        }
+        section ul {
+          margin-top: 10px;
+          margin-bottom: 20px;
+        }
+        section li {
+          line-height: 1.5em;
+        }
+        section a {
+          color: #666;
+          text-decoration: none;
+          transition: 0.3s;
+        }
+        section a:hover {
+          color: #222;
+          font-weight: bold;
+          text-decoration: underline;
+        }
+        footer {
+          background-color: #222;
+          color: #fff;
+          text-align: center;
+          padding: 10px;
+          position: absolute;
+          bottom: 10;
+          width: 100%;
+        }
+        /* Animation */
+        h1 {
+          animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.1);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+      </style>
+  </head>
+<body>
+    <header>
+      <h1>Web Development Resources</h1>
+   
+    </header>
+    <main>
+      <section id="html">
+        <h2>HTML Resources</h2>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN Web Docs: HTML</a></li>
+          <li><a href="https://www.w3schools.com/html/">W3Schools: HTML Tutorial</a></li>
+          <li><a href="https://htmlreference.io/">HTML Reference</a></li>
+        </ul>
+      </section>
+      <section id="css">
+        <h2>CSS Resources</h2>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN Web Docs: CSS</a></li>
+          <li><a href="https://www.w3schools.com/css/">W3Schools: CSS Tutorial</a></li>
+          <li><a href="https://css-tricks.com/">CSS-Tricks</a></li>
+        </ul>
+      </section>
+      <section id="javascript">
+        <h2>JavaScript Resources</h2>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN Web Docs: JavaScript</a></li>
+          <li><a href="https://www.w3schools.com/js/">W3Schools: JavaScript Tutorial</a></li>
+          <li><a href="https://javascript.info/">JavaScript.info</a></li>
+        </ul>
+      </section>
+      <section id="courses">
+        <h2>Courses</h2>
+        <ul>
+            <li><a href="https://www.udemy.com/course/the-web-developer-bootcamp/">The Web Developer Bootcamp by Colt Steele</a> - Udemy</li>
+            <li><a href="https://www.freecodecamp.org/">FreeCodeCamp</a> - Free online learning platform with certifications</li>
+            <li><a href="https://www.codecademy.com/">Codecademy</a> - Learn to code interactively, for free</li>
+          </ul>
+      </section>
+      <section id="Books">
+        <h2>Books</h2>
+        <ul>
+            <li><a href="https://www.amazon.com/Web-Design-HTML-JavaScript-jQuery/dp/1118907442">Web Design with HTML, CSS, JavaScript and jQuery Set by Jon Duckett</a></li>
+            <li><a href="https://www.amazon.com/Learning-Web-Design-Beginners-JavaScript/dp/1491960205">Learning Web Design: A Beginner's Guide to HTML, CSS, JavaScript, and Web Graphics by Jennifer Robbins</a></li>
+            <li><a href="https://www.amazon.com/You-Dont-Know-JS-Book/dp/B01AY9P0P6">You Don't Know JS series by Kyle Simpson</a></li>
+          </ul>
+      
+      </section>
+      <section id="youtube">
+        <h2>YouTube Channels</h2>
+        <ul>
+          <li><a href="https://www.youtube.com/user/TechGuyWeb">Traversy Media</a></li>
+          <li><a href="https://www.youtube.com/user/learncodeacademy">LearnCode.academy</a></li>
+          <li><a href="https://www.youtube.com/c/FreeCodeCamp/videos">freeCodeCamp.org</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU">Modern HTML & CSS From The Beginning (Including Sass)</a> - Traversy Media</li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 </p>
+    </footer>
+  </body>
+</html>
+
+
+
+
