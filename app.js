@@ -8,6 +8,7 @@ const AppError = require('./utils/AppError');
 const wrapAsync = require('./utils/wrapAsync');
 const UserContactUs = require("./models/usercontactus");
 const UserFeedback = require("./models/userfeedback");
+const Discussion = require("./models/discussion");
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
@@ -15,7 +16,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const { isLoggedIn } = require('./middleware');
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/gyaanshaala';
+const dbUrl = "mongodb://0.0.0.0:27017/GyaanShaala"
 main().catch(err => {
     console.log(err)
 });
@@ -105,6 +106,31 @@ app.get("/testimonials", (req, res) => {
 app.get("/feedback", (req, res) => {
     res.render("templates/feedback");
 })
+app.get("/discussion", async (req, res)=>{
+    const discussion = await Discussion.find();
+    res.status(200).json(discussion);
+}
+)
+app.post("/discussion", async (req, res)=>{
+    console.log(req.headers);
+    const{title,createdby,text}= req.headers;
+    if(title == null || createdby == null || text == null){
+        res.status(400).json({message:"field empty"});
+    }
+    else{
+        try {
+            const discussion = new Discussion({title,createdby,text,comments:[]})
+            await discussion.save();
+            res.status(200).json(discussion);
+        }
+        catch (error) {
+            console.log(error);
+            res.status(500).send(error)
+        }
+    }
+}
+)
+
 app.post("/feedback", async (req, res) => {
     try {
         const userFeedback = new UserFeedback(req.body)
