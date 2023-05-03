@@ -109,7 +109,8 @@ app.post("/feedback", async (req, res) => {
     try {
         const userFeedback = new UserFeedback(req.body)
         await userFeedback.save();
-        res.status(201).render("home");
+        req.flash("success", "Feedback Submitted");
+        res.status(201).redirect("/materials");
     }
     catch (error) {
         res.status(500).send(error)
@@ -189,7 +190,44 @@ app.post('/login', passport.authenticate('local', { failureFlash: true, failureR
     delete req.session.returnTo;
     res.redirect(redirectUrl);
 })
+app.get('/adminlogin', (req, res) => {
+    res.render('admin/adminlogin');
+})
+app.get('/adminpage', (req, res) => {
+    res.render('admin/adminpage');
+})
+app.post('/adminlogin', passport.authenticate('local', { failureFlash: true, failureRedirect: '/admin' }), async (req, res) => {
+    req.flash('success', 'Welcome Admin');
+    const users = await User.find({});
+    const feedbacks = await UserFeedback.find({});
+    res.render('admin/adminpage', { users, feedbacks });
+})
+app.get('/admin/edituser', async (req, res) => {
+    const id = req.query.id;
+    const userData = await User.findById({ _id: id })
+    if (userData) {
+        res.render('admin/edituser', { user: userData });
+    }
+    else {
+        res.redirect("/adminpage")
+    }
+})
 
+app.post('/edituser', async (req, res) => {
+    const userData = await User.findByIdAndUpdate({ _id: req.body.id },
+        { $set: { username: req.body.username, email: req.body.email } })
+    const users = await User.find({});
+    const feedbacks = await UserFeedback.find({});
+    res.render('admin/adminpage', { users, feedbacks })
+})
+
+app.get("/admin/deleteuser", async (req, res) => {
+    const id = req.query.id;
+    await User.deleteOne({ _id: id });
+    const users = await User.find({});
+    const feedbacks = await UserFeedback.find({});
+    res.render('admin/adminpage', { users, feedbacks })
+})
 app.get('/logout', (req, res, next) => {
     req.logout(function (err) {
         if (err) { return next(err); }

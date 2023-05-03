@@ -1,13 +1,27 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
+const { findByUsername } = require('./usercontactus');
 
 const UserSchema = new Schema({
     email: {
         type: String,
         required: true,
         // unique: true
-    }
+    },
+    username: {
+        type: String,
+        required: true,
+        // unique: true
+    },
+    // is_admin: {
+    //     type: Number,
+    //     required: true
+    // },
+    // is_verified: {
+    //     type: Number,
+    //     default: 0
+    // }
 });
 
 UserSchema.plugin(passportLocalMongoose);
@@ -21,4 +35,5 @@ UserSchema.post('save', function (error, doc, next) {
     }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+let User = mongoose.model("User", UserSchema);
+module.exports = User;

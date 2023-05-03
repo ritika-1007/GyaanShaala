@@ -1,0 +1,37 @@
+<% layout('layouts/boilerplate')%>
+
+    <div class="container d-flex justify-content-center align-items-center ">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <img src="https://e7.pngegg.com/pngimages/146/551/png-clipart-user-login-mobile-phones-password-user-miscellaneous-blue.png"
+                        alt="" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title">Edit User</h5>
+                        <form action="/edituser" method="POST" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="username">Username</label>
+                                <input class="form-control" type="text" id="username" name="username" autofocus
+                                    value=<%=user.username%> required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-control" type="email" id="email" name="email" value=<%=user.email%>
+                                required>
+                            </div>
+                            <!-- <div class="mb-3">
+                                <label>Verified</label>
+                                <input type="radio" name="verify" value="1" <%#if(user.isVerified===1){%>checked<#%}%>>
+                                    <label>Unverified</label>
+                                    <input type="radio" name="verify" value="0" <%#if(user.isVerified===0){%>checked<#%}%>
+                                        >
+                            </div> -->
+                            <input type="hidden" name="id" value=<%=user._id%>>
+                            <button class="btn btn-success w-100">Edit Info</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

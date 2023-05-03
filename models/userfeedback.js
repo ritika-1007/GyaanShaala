@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
+
 
 const userfeedbackSchema = mongoose.Schema({
     name: {
@@ -12,7 +12,7 @@ const userfeedbackSchema = mongoose.Schema({
         min: 1999,
         max: 2023
     },
-    message: {
+    feedback: {
         type: String,
         // required: true,
         minLength: 3

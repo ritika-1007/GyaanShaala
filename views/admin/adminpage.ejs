@@ -1,0 +1,59 @@
+<% layout('layouts/boilerplate')%>
+    <h1>Welcome Admin</h1>
+    <br>
+    <h3>Users List</h3>
+    <table width="50%">
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+
+        <%if(users.length>0){%>
+            <% for (let i=0; i <users.length; i++ ) { %>
+                <%if(users[i].username!=='admin'){%>
+                    <tr>
+                        <td>
+                            <%=users[i].username %>
+                        </td>
+                        <td>
+                            <%=users[i].email %>
+                        </td>
+                        <td>
+                            <a href="/admin/edituser?id=<%=users[i]._id%>">Edit</a>
+                            <a href="/admin/deleteuser?id=<%=users[i]._id%>">Delete</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                        <% } %>
+                            <%} else {%>
+                                <tr>
+                                    <td colspan="5">Users Not Found.</td>
+                                </tr>
+                                <%}%>
+    </table>
+
+    <h3>User Feedbacks</h3>
+    <table width="50%">
+        <tr>
+            <th>Username</th>
+            <th>Feedbacks</th>
+        </tr>
+
+        <%if(feedbacks.length>0){%>
+            <% for (let i=0; i <feedbacks.length; i++ ) { %>
+                <tr>
+                    <td>
+                        <%=feedbacks[i].name %>
+                    </td>
+                    <td>
+                        <%=feedbacks[i].feedback %>
+                    </td>
+                </tr>
+                <% } %>
+                    <%} else {%>
+                        <tr>
+                            <td colspan="5">Users Not Found.</td>
+                        </tr>
+                        <%}%>
+    </table>
