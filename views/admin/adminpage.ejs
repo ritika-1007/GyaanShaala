@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate')%>
+    <link rel="stylesheet" href="/stylesheets/adminpage.css">
     <h1>Welcome Admin</h1>
     <br>
     <h3>Users List</h3>
@@ -31,9 +32,35 @@
                                     <td colspan="5">Users Not Found.</td>
                                 </tr>
                                 <%}%>
-    </table>
+    </table><br>
+    <h3>Books List</h3>
+    <table width="50%">
+        <tr>
+            <th>Name</th>
+            <th>Subject</th>
+        </tr>
 
-    <h3>User Feedbacks</h3>
+        <%if(books.length>0){%>
+            <% for (let i=0; i <books.length; i++ ) { %>
+                <tr>
+                    <td>
+                        <%=books[i].name %>
+                    </td>
+                    <td>
+                        <%=books[i].subject %>
+                    </td>
+                </tr>
+                <% } %>
+                    <%} else {%>
+                        <tr>
+                            <td colspan="5">Books Not Found.</td>
+                        </tr>
+                        <%}%>
+    </table>
+    <br>
+    <h4><a href="/addbooks">Add Book</a></h4>
+    <br>
+    <h3>User Feedbacks List</h3>
     <table width="50%">
         <tr>
             <th>Username</th>
@@ -57,3 +84,4 @@
                         </tr>
                         <%}%>
     </table>
+    <br>

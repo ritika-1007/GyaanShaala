@@ -3,6 +3,7 @@
     <h1 class="heading">Books</h1>
 
     <div class="row">
+
         <div class="column">
             <div>
                 <div class="card" style="width: 18rem;">
@@ -10,7 +11,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Digital & Computer Organization</h6>
-                        <a href="/docs/dco.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/dco.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -23,7 +25,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Programming & Problem Solving</h6>
-                        <a href="/docs/pps.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/pps.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -36,7 +39,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Principles of IT Management</h6>
-                        <a href="/docs/it.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/it.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -49,7 +53,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Data Structure</h6>
-                        <a href="/docs/ds.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/ds.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -62,7 +67,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Database Management System</h6>
-                        <a href="/docs/dbms.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/dbms.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -75,7 +81,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Operating System</h6>
-                        <a href="/docs/os.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/os.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -88,7 +95,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Analysis of Algorithms</h6>
-                        <a href="/docs/daa.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/daa.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -101,7 +109,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Soft Computing</h6>
-                        <a href="/docs/sc.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/sc.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -114,7 +123,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Computer Graphics</h6>
-                        <a href="/docs/cg.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/cg.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -127,7 +137,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Software Engineering</h6>
-                        <a href="/docs/se.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/se.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -140,7 +151,8 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Data Mining</h6>
-                        <a href="/docs/dm.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/dm.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
@@ -153,12 +165,36 @@
                         class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-text">Computer Networks</h6>
-                        <a href="/docs/cn.pdf" type="application/pdf" target="_blank"><label>Read Book</label></a>
+                        <a href="/docs/cn.pdf" type="application/pdf" target="_blank"><label>Read
+                                Book</label></a>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+        <%if(books.length>0){%>
+            <%for(let i=0;i<books.length;i++){%>
+                <div class="column">
+                    <div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://thumbs.dreamstime.com/b/open-book-19523116.jpg" class="card-img-top"
+                                alt="...">
+                            <div class="card-body">
+                                <h6 class="card-text">
+                                    Name:<%=books[i].name%>
+                                </h6>
+                                <h6 class="card-text">
+                                    Subject:<%=books[i].subject%>
+                                </h6>
 
+                                <a href="<%=books[i].pdf[0].url%>" target="_blank"><label>ReadBook
+                                    </label></a>
+                                <a href="/admin/deletebooks?id=<%=books[i]._id%>"><label>Delete</label></a>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+                    <%}%>
     </div>

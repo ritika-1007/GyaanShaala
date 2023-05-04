@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const express = require("express");
 fs = require('fs');
 const app = express();
@@ -14,9 +18,13 @@ const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const multer = require('multer');
+const { storage, cloudinary } = require('./cloudinary');
+const upload = multer({ storage });
 const User = require('./models/user');
+const Book = require('./models/book');
 const { isLoggedIn } = require('./middleware');
-const dbUrl = "mongodb://0.0.0.0:27017/GyaanShaala"
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/gyaanshaala';
 main().catch(err => {
     console.log(err)
 });
@@ -58,6 +66,21 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, '/upload', function (error, success) {
+//             if (error) throw error;
+//         });
+//     },
+//     filename: function (req, file, cb) {
+//         const name = Date.now() + '-' + file.originalName;
+//         cb(null, name, function (error1, success1) {
+//             if (error1) throw error1;
+//         })
+//     }
+// });
+
 
 app.get("/", (req, res) => {
     res.render("home");
@@ -106,20 +129,20 @@ app.get("/testimonials", (req, res) => {
 app.get("/feedback", (req, res) => {
     res.render("templates/feedback");
 })
-app.get("/discussion", async (req, res)=>{
+app.get("/discussion", async (req, res) => {
     const discussion = await Discussion.find();
     res.status(200).json(discussion);
 }
 )
-app.post("/discussion", async (req, res)=>{
+app.post("/discussion", async (req, res) => {
     console.log(req.headers);
-    const{title,createdby,text}= req.headers;
-    if(title == null || createdby == null || text == null){
-        res.status(400).json({message:"field empty"});
+    const { title, createdby, text } = req.headers;
+    if (title == null || createdby == null || text == null) {
+        res.status(400).json({ message: "field empty" });
     }
-    else{
+    else {
         try {
-            const discussion = new Discussion({title,createdby,text,comments:[]})
+            const discussion = new Discussion({ title, createdby, text, comments: [] })
             await discussion.save();
             res.status(200).json(discussion);
         }
@@ -172,8 +195,9 @@ app.get("/materials/academics/pyq", isLoggedIn, (req, res) => {
 app.get("/materials/academics/assign", isLoggedIn, (req, res) => {
     res.render("templates/innercontents/assign");
 })
-app.get("/materials/academics/books", isLoggedIn, (req, res) => {
-    res.render("templates/innercontents/books");
+app.get("/materials/academics/books", isLoggedIn, async (req, res) => {
+    const books = await Book.find({});
+    res.render("templates/innercontents/books", { books });
 })
 
 app.get('/materials/academics/calendar', isLoggedIn, function (req, res) {
@@ -226,7 +250,8 @@ app.post('/adminlogin', passport.authenticate('local', { failureFlash: true, fai
     req.flash('success', 'Welcome Admin');
     const users = await User.find({});
     const feedbacks = await UserFeedback.find({});
-    res.render('admin/adminpage', { users, feedbacks });
+    const books = await Book.find({});
+    res.render('admin/adminpage', { users, feedbacks, books });
 })
 app.get('/admin/edituser', async (req, res) => {
     const id = req.query.id;
@@ -244,7 +269,8 @@ app.post('/edituser', async (req, res) => {
         { $set: { username: req.body.username, email: req.body.email } })
     const users = await User.find({});
     const feedbacks = await UserFeedback.find({});
-    res.render('admin/adminpage', { users, feedbacks })
+    const books = await Book.find({});
+    res.render('admin/adminpage', { users, feedbacks, books })
 })
 
 app.get("/admin/deleteuser", async (req, res) => {
@@ -252,7 +278,40 @@ app.get("/admin/deleteuser", async (req, res) => {
     await User.deleteOne({ _id: id });
     const users = await User.find({});
     const feedbacks = await UserFeedback.find({});
-    res.render('admin/adminpage', { users, feedbacks })
+    const books = await Book.find({});
+    req.flash("success", "User Deleted");
+    res.render('admin/adminpage', { users, feedbacks, books })
+})
+
+app.get("/addbooks", (req, res) => {
+    res.render('admin/addbooks');
+})
+app.post('/addbooks', upload.array('pdf'), async (req, res) => {
+    try {
+        const newBook = new Book({
+            name: req.body.name,
+            subject: req.body.subject,
+        })
+        newBook.pdf = req.files.map(f => ({ url: f.path, filename: f.filename }))
+        await newBook.save();
+        // console.log(req.files)
+
+        const books = await Book.find({});
+        req.flash("success", "Book Added");
+        res.render('templates/innercontents/books', { books })
+    }
+    catch (e) {
+        req.flash("error", "Invalid Book");
+        res.render("admin/addbooks")
+    }
+
+})
+app.get("/admin/deletebooks", async (req, res) => {
+    const id = req.query.id;
+    await Book.deleteOne({ _id: id });
+    const books = await Book.find({});
+    req.flash("success", "Book Deleted");
+    res.render('templates/innercontents/books', { books })
 })
 app.get('/logout', (req, res, next) => {
     req.logout(function (err) {

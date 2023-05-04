@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
-const { findByUsername } = require('./usercontactus');
 
 const UserSchema = new Schema({
     email: {
