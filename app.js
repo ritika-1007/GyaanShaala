@@ -23,6 +23,8 @@ const { storage, cloudinary } = require('./cloudinary');
 const upload = multer({ storage });
 const User = require('./models/user');
 const Book = require('./models/book');
+const Pyq = require('./models/pyq');
+const Ppt = require('./models/ppt');
 const { isLoggedIn } = require('./middleware');
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/gyaanshaala';
 main().catch(err => {
@@ -189,11 +191,13 @@ app.get("/materials/development/ml", isLoggedIn, (req, res) => {
     res.render("templates/innercontents/ml");
 })
 //academics content
-app.get("/materials/academics/pyq", isLoggedIn, (req, res) => {
-    res.render("templates/innercontents/pyq");
+app.get("/materials/academics/pyq", isLoggedIn, async (req, res) => {
+    const pyqs = await Pyq.find({});
+    res.render("templates/innercontents/pyq", { pyqs });
 })
-app.get("/materials/academics/assign", isLoggedIn, (req, res) => {
-    res.render("templates/innercontents/assign");
+app.get("/materials/academics/ppt", isLoggedIn, async (req, res) => {
+    const ppts = await Ppt.find({});
+    res.render("templates/innercontents/ppt", { ppts });
 })
 app.get("/materials/academics/books", isLoggedIn, async (req, res) => {
     const books = await Book.find({});
@@ -251,7 +255,9 @@ app.post('/adminlogin', passport.authenticate('local', { failureFlash: true, fai
     const users = await User.find({});
     const feedbacks = await UserFeedback.find({});
     const books = await Book.find({});
-    res.render('admin/adminpage', { users, feedbacks, books });
+    const pyqs = await Pyq.find({});
+    const ppts = await Ppt.find({});
+    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts });
 })
 app.get('/admin/edituser', async (req, res) => {
     const id = req.query.id;
@@ -270,7 +276,9 @@ app.post('/edituser', async (req, res) => {
     const users = await User.find({});
     const feedbacks = await UserFeedback.find({});
     const books = await Book.find({});
-    res.render('admin/adminpage', { users, feedbacks, books })
+    const pyqs = await Pyq.find({});
+    const ppts = await Ppt.find({});
+    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts })
 })
 
 app.get("/admin/deleteuser", async (req, res) => {
@@ -279,8 +287,10 @@ app.get("/admin/deleteuser", async (req, res) => {
     const users = await User.find({});
     const feedbacks = await UserFeedback.find({});
     const books = await Book.find({});
-    req.flash("success", "User Deleted");
-    res.render('admin/adminpage', { users, feedbacks, books })
+    const pyqs = await Pyq.find({});
+    const ppts = await Ppt.find({});
+
+    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts })
 })
 
 app.get("/addbooks", (req, res) => {
@@ -297,22 +307,79 @@ app.post('/addbooks', upload.array('pdf'), async (req, res) => {
         // console.log(req.files)
 
         const books = await Book.find({});
-        req.flash("success", "Book Added");
+
         res.render('templates/innercontents/books', { books })
     }
     catch (e) {
         req.flash("error", "Invalid Book");
         res.render("admin/addbooks")
     }
-
 })
 app.get("/admin/deletebooks", async (req, res) => {
     const id = req.query.id;
     await Book.deleteOne({ _id: id });
     const books = await Book.find({});
-    req.flash("success", "Book Deleted");
+
     res.render('templates/innercontents/books', { books })
 })
+
+
+app.get("/addpyq", (req, res) => {
+    res.render('admin/addpyq');
+})
+app.post('/addpyq', upload.array('pdf'), async (req, res) => {
+    try {
+        const newPyq = new Pyq({
+            semester: req.body.semester,
+            year: req.body.year
+        })
+        newPyq.pdf = req.files.map(f => ({ url: f.path, filename: f.filename }))
+        await newPyq.save();
+        const pyqs = await Pyq.find({});
+
+        res.render('templates/innercontents/pyq', { pyqs })
+    }
+    catch (e) {
+        req.flash("error", "Invalid Pyq");
+        res.render("admin/addpyq")
+    }
+})
+app.get("/admin/deletepyq", async (req, res) => {
+    const id = req.query.id;
+    await Pyq.deleteOne({ _id: id });
+    const pyqs = await Pyq.find({});
+
+    res.render('templates/innercontents/pyq', { pyqs })
+})
+
+app.get("/addppt", (req, res) => {
+    res.render('admin/addppt');
+})
+app.post('/addppt', upload.array('pdf'), async (req, res) => {
+    try {
+        const newPpt = new Ppt({
+            semester: req.body.semester,
+            year: req.body.year,
+            topic: req.body.topic,
+            subject: req.body.subject
+        })
+        newPpt.pdf = req.files.map(f => ({ url: f.path, filename: f.filename }))
+        await newPpt.save();
+        const ppts = await Ppt.find({});
+
+        res.render('templates/innercontents/ppt', { ppts })
+    }
+    catch (e) {
+        res.render("admin/addppt")
+    }
+})
+app.get("/admin/deleteppt", async (req, res) => {
+    const id = req.query.id;
+    await Ppt.deleteOne({ _id: id });
+    const ppts = await Ppt.find({});
+    res.render('templates/innercontents/ppt', { ppts })
+})
+
 app.get('/logout', (req, res, next) => {
     req.logout(function (err) {
         if (err) { return next(err); }

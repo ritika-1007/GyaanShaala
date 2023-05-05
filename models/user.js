@@ -12,15 +12,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         // unique: true
-    },
-    // is_admin: {
-    //     type: Number,
-    //     required: true
-    // },
-    // is_verified: {
-    //     type: Number,
-    //     default: 0
-    // }
+    }
 });
 
 UserSchema.plugin(passportLocalMongoose);

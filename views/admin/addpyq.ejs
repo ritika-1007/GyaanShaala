@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate')%>
+
+    <div class="container d-flex justify-content-center align-items-center ">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <img src="https://thumbs.dreamstime.com/b/open-book-19523116.jpg" alt="" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title">Add New Question Paper</h5>
+                        <form action="/addpyq" method="POST" novalidate class="validated-form"
+                            enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label class="form-label" for="year">Semester</label>
+                                <input class="form-control" type="text" id="semester" name="semester" autofocus
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="year">Year</label>
+                                <input class="form-control" type="text" id="year" name="year" autofocus required>
+                            </div>
+
+                            <!-- <div class="mb-3">
+                                <label class="form-label" for="subject">Subject</label>
+                                <input class="form-control" type="subject" id="subject" name="subject" required>
+                            </div> -->
+                            <div class="mb-3">
+                                <div class="form-file custom-file">
+                                    <input type="file" class="form-file-input" id="pdf" name="pdf" multiple>
+                                    <label class="form-file-label" for="pdf">
+                                        <span class="form-file-text custom-file-label"></span>
+                                        <span class="form-file-button"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-success">Add Question Paper</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
