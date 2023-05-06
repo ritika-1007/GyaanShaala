@@ -55,7 +55,6 @@ const sessionConfig = {
     }
 }
 
-
 app.use(express.urlencoded({ extended: true }))
 app.engine('ejs', ejsMate);
 app.set("view engine", "ejs");
@@ -251,13 +250,19 @@ app.get('/adminpage', (req, res) => {
     res.render('admin/adminpage');
 })
 app.post('/adminlogin', passport.authenticate('local', { failureFlash: true, failureRedirect: '/admin' }), async (req, res) => {
-    req.flash('success', 'Welcome Admin');
-    const users = await User.find({});
-    const feedbacks = await UserFeedback.find({});
-    const books = await Book.find({});
-    const pyqs = await Pyq.find({});
-    const ppts = await Ppt.find({});
-    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts });
+    if (req.body.username === 'admin') {
+
+        const users = await User.find({});
+        const feedbacks = await UserFeedback.find({});
+        const books = await Book.find({});
+        const pyqs = await Pyq.find({});
+        const ppts = await Ppt.find({});
+        res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts });
+    }
+    else {
+
+        res.render("admin/adminlogin")
+    }
 })
 app.get('/admin/edituser', async (req, res) => {
     const id = req.query.id;
