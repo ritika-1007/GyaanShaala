@@ -25,6 +25,8 @@ const User = require('./models/user');
 const Book = require('./models/book');
 const Pyq = require('./models/pyq');
 const Ppt = require('./models/ppt');
+const Resource = require('./models/resource');
+const Subject = require('./models/subject');
 const { isLoggedIn } = require('./middleware');
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/gyaanshaala';
 main().catch(err => {
@@ -167,8 +169,9 @@ app.post("/feedback", async (req, res) => {
     }
 })
 //data structures and algorithms content
-app.get("/materials/dsa/ds", isLoggedIn, (req, res) => {
-    res.render("templates/innercontents/ds");
+app.get("/materials/dsa/ds", isLoggedIn, async (req, res) => {
+    const resources = await Resource.find({});
+    res.render("templates/innercontents/ds", { resources });
 })
 app.get("/materials/dsa/practice", isLoggedIn, (req, res) => {
     res.render("templates/innercontents/practice");
@@ -257,7 +260,9 @@ app.post('/adminlogin', passport.authenticate('local', { failureFlash: true, fai
         const books = await Book.find({});
         const pyqs = await Pyq.find({});
         const ppts = await Ppt.find({});
-        res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts });
+        const resources = await Resource.find({});
+        const subjects = await Subject.find({});
+        res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts, resources, subjects });
     }
     else {
 
@@ -283,7 +288,8 @@ app.post('/edituser', async (req, res) => {
     const books = await Book.find({});
     const pyqs = await Pyq.find({});
     const ppts = await Ppt.find({});
-    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts })
+    const resources = await Resource.find({});
+    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts, resources })
 })
 
 app.get("/admin/deleteuser", async (req, res) => {
@@ -294,8 +300,10 @@ app.get("/admin/deleteuser", async (req, res) => {
     const books = await Book.find({});
     const pyqs = await Pyq.find({});
     const ppts = await Ppt.find({});
+    const resources = await Resource.find({});
+    const subjects = await Subject.find({});
 
-    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts })
+    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts, resources, subjects })
 })
 
 app.get("/addbooks", (req, res) => {
@@ -391,7 +399,58 @@ app.get('/logout', (req, res, next) => {
         res.redirect('/');
     });
 });
+app.get("/addresource", (req, res) => {
+    res.render('admin/addresource');
+})
+app.post('/addresource', async (req, res) => {
+    try {
+        const newResource = new Resource({
+            topic: req.body.topic,
+            followuplink: req.body.followuplink
+        })
+        await newResource.save();
+        const resources = await Resource.find({});
+        console.log(newResource)
+        res.render('templates/innercontents/ds', { resources })
+    }
+    catch (e) {
+        req.flash("error", "Invalid Resource");
+        res.render("admin/addresource")
+    }
+})
+app.get("/admin/deleteresource", async (req, res) => {
+    const id = req.query.id;
+    await Resource.deleteOne({ _id: id });
+    const resources = await Resource.find({});
+    res.render('templates/innercontents/ds', { resources })
+})
+app.get("/addsubject", (req, res) => {
+    res.render('admin/addsubject');
+})
+app.post('/addsubject', async (req, res) => {
+    try {
+        const newSubject = new Subject({
+            topic: req.body.topic,
+            noteslink: req.body.noteslink,
+            playlistlink: req.body.playlistlink,
+            queslink: req.body.queslink
+        })
+        await newSubject.save();
+        const subjects = await Subject.find({});
 
+        res.render('templates/innercontents/core', { subjects })
+    }
+    catch (e) {
+        req.flash("error", "Invalid");
+        res.render("admin/addsubject")
+    }
+})
+app.get("/admin/deletesubject", async (req, res) => {
+    const id = req.query.id;
+    await Subject.deleteOne({ _id: id });
+    const subjects = await Subject.find({});
+    res.render('templates/innercontents/core', { subjects })
+})
 app.listen(3000, () => {
     console.log(`Listening at port 3000`);
 })

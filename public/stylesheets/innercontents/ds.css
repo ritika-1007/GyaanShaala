@@ -53,6 +53,7 @@ body {
   font-size: 18px;
   margin: 0;
   padding: 0;
+  color: black;
 }
 
 .link {
@@ -63,7 +64,7 @@ body {
 }
 
 .link:hover {
-  color: #0056b3;
+  color: purple;
   text-decoration: underline;
   transition: color 0.3s ease;
 }

@@ -94,6 +94,23 @@
                     access playlist</a>
 
             </li>
+            <h2>Newly Added</h2>
+            </p>
+            <%if(resources.length>0){%>
+                <%for(let i=0;i<resources.length;i++){%>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                        <label>
+                            <%=resources[i].topic%>
+                        </label>
+
+                        <a href="<%=resources[i].followuplink%>" target="_blank">Click to
+                            access playlist</a>
+
+                    </li>
+                    <%}%>
+                        <%}%>
         </ul>
 
     </div>

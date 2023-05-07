@@ -1,0 +1,37 @@
+<% layout('layouts/boilerplate')%>
+
+    <div class="container d-flex justify-content-center align-items-center ">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <img src="https://leverageedublog.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2019/11/23171201/Subject-combination.jpg"
+                        alt="" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title">New Core Subject Resource</h5>
+                        <form action="/addsubject" method="POST" novalidate class="validated-form">
+                            <div class="mb-3">
+                                <label class="form-label" for="topic">Topic</label>
+                                <input class="form-control" type="text" id="topic" name="topic" autofocus required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="noteslink">Notes Link</label>
+                                <input class="form-control" type="text" id="noteslink" name="noteslink" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="playlistlink">Playlist Link</label>
+                                <input class="form-control" type="text" id="playlistlink" name="playlistlink" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="queslink">Question Link</label>
+                                <input class="form-control" type="text" id="queslink" name="queslink" required>
+                            </div>
+
+                            <button class="btn btn-success">Add Resource</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

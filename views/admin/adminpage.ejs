@@ -22,7 +22,7 @@
                             <%=users[i].email %>
                         </td>
                         <td>
-                            <a href="/admin/edituser?id=<%=users[i]._id%>">Edit</a>
+                            <a href="/admin/edituser?id=<%=users[i]._id%>">Edit</a>&emsp;
                             <a href="/admin/deleteuser?id=<%=users[i]._id%>">Delete</a>
                         </td>
                     </tr>
@@ -131,6 +131,96 @@
     <br>
     <h4><a href="/addppt">Add PPT</a></h4>
     <br>
+    <h3>Resource's List</h3>
+    <h5>•Data Structures</h5>
+    <table width="50%">
+        <tr>
+            <th>Topic</th>
+            <th>Link</th>
+            <th>Action</th>
+        </tr>
+
+        <%if(resources.length>0){%>
+            <% for (let i=0; i <resources.length; i++ ) { %>
+                <tr>
+                    <td>
+                        <%=resources[i].topic%>
+                    </td>
+                    <td>
+                        <%=resources[i].followuplink %>
+                    </td>
+                    <td>
+                        <a href="/admin/deleteresource?id=<%=resources[i]._id%>"><label>Delete</label></a>
+                    </td>
+                </tr>
+                <% } %>
+                    <%} else {%>
+                        <tr>
+                            <td colspan="5">Nothing New.</td>
+                        </tr>
+                        <%}%>
+    </table>
+    <br>
+    <h4><a href="/addresource">Add Resource</a></h4>
+    <br>
+    <h5>•Core Subjects</h5>
+    <table width="50%">
+        <tr>
+            <th>Topic</th>
+            <th>Notes Link</th>
+            <th>Playlist Link</th>
+            <th>Questions Link</th>
+            <th>Action</th>
+        </tr>
+
+        <%if(subjects.length>0){%>
+            <% for (let i=0; i <subjects.length; i++ ) { %>
+                <tr>
+                    <td>
+                        <%=subjects[i].topic%>
+                    </td>
+                    <td>
+                        <%=subjects[i].noteslink %>
+                    </td>
+                    <td>
+                        <%=subjects[i].playlistlink %>
+                    </td>
+                    <td>
+                        <%=subjects[i].queslink %>
+                    </td>
+                    <td>
+                        <a href="/admin/deletesubject?id=<%=subjects[i]._id%>"><label>Delete</label></a>
+                    </td>
+                </tr>
+                <% } %>
+                    <%} else {%>
+                        <tr>
+                            <td colspan="5">Nothing New.</td>
+                        </tr>
+                        <%}%>
+    </table>
+    <br>
+    <h4><a href="/addsubject">Add Resource</a></h4>
+    <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <h3>User Feedbacks List</h3>
     <table width="50%">
         <tr>
