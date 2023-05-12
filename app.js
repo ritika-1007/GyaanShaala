@@ -27,6 +27,8 @@ const Pyq = require('./models/pyq');
 const Ppt = require('./models/ppt');
 const Resource = require('./models/resource');
 const Subject = require('./models/subject');
+
+
 const { isLoggedIn } = require('./middleware');
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/gyaanshaala';
 main().catch(err => {
@@ -176,15 +178,17 @@ app.get("/materials/dsa/ds", isLoggedIn, async (req, res) => {
 app.get("/materials/dsa/practice", isLoggedIn, (req, res) => {
     res.render("templates/innercontents/practice");
 })
-app.get("/materials/core", isLoggedIn, (req, res) => {
-    res.render("templates/innercontents/core");
+app.get("/materials/core", isLoggedIn, async (req, res) => {
+    const subjects = await Subject.find({});
+    res.render("templates/innercontents/core", { subjects });
 })
 // app.get("/materials/resume", (req, res) => {
 //     res.render("templates/innercontents/resume");
 // })
 //development contents
-app.get("/materials/development/webdev", isLoggedIn, (req, res) => {
+app.get("/materials/development/webdev", isLoggedIn, async (req, res) => {
     res.render("templates/innercontents/webdev");
+
 })
 app.get("/materials/development/appdev", isLoggedIn, (req, res) => {
     res.render("templates/innercontents/appdev");
@@ -289,7 +293,8 @@ app.post('/edituser', async (req, res) => {
     const pyqs = await Pyq.find({});
     const ppts = await Ppt.find({});
     const resources = await Resource.find({});
-    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts, resources })
+    const subjects = await Subject.find({});
+    res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts, resources, subjects })
 })
 
 app.get("/admin/deleteuser", async (req, res) => {
@@ -302,6 +307,7 @@ app.get("/admin/deleteuser", async (req, res) => {
     const ppts = await Ppt.find({});
     const resources = await Resource.find({});
     const subjects = await Subject.find({});
+
 
     res.render('admin/adminpage', { users, feedbacks, books, pyqs, ppts, resources, subjects })
 })
@@ -410,7 +416,6 @@ app.post('/addresource', async (req, res) => {
         })
         await newResource.save();
         const resources = await Resource.find({});
-        console.log(newResource)
         res.render('templates/innercontents/ds', { resources })
     }
     catch (e) {
@@ -437,7 +442,6 @@ app.post('/addsubject', async (req, res) => {
         })
         await newSubject.save();
         const subjects = await Subject.find({});
-
         res.render('templates/innercontents/core', { subjects })
     }
     catch (e) {
@@ -451,6 +455,7 @@ app.get("/admin/deletesubject", async (req, res) => {
     const subjects = await Subject.find({});
     res.render('templates/innercontents/core', { subjects })
 })
+
 app.listen(3000, () => {
     console.log(`Listening at port 3000`);
 })
